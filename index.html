@@ -220,6 +220,15 @@ p{margin:0}
 .chips{margin:0;padding:0}
 .areas-note{margin-top:26px;color:var(--muted);max-width:62ch}
 
+/* Customer reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.review{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:24px;display:flex;flex-direction:column;gap:18px}
+.review-rating{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.review-stars{display:flex;gap:3px;color:#D99100;font-size:1.2rem;line-height:1}
+.review-source{color:var(--muted);font-size:.82rem;font-weight:600}
+.review blockquote{margin:0;color:var(--text);font-size:.98rem;line-height:1.65}
+.reviewer{margin-top:auto;padding-top:4px;font-weight:700;font-family:"Bricolage Grotesque",sans-serif}
+
 /* FAQ */
 .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:10px;overflow:hidden}
@@ -239,17 +248,18 @@ p{margin:0}
 footer{padding:40px 0 48px;color:var(--muted);font-size:.93rem}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
 footer strong{color:var(--text)}
+footer .social{display:flex;gap:10px;margin-top:12px}
+footer .social a{width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--text);transition:background .15s ease,color .15s ease,border-color .15s ease}
+footer .social a:hover{background:var(--gold);border-color:var(--gold);color:#000}
+footer .social svg{width:18px;height:18px}
 
-/* Floating WA + mobile bar */
-.float-wa{position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:50;width:64px;height:64px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 28px -6px rgba(0,0,0,.45);text-decoration:none}
-.float-wa svg{width:34px;height:34px;fill:#fff}
-.float-wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid var(--wa);animation:ping 2.4s ease-out 2.5s 3}
-@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+/* Mobile bar */
 .mbar{display:none}
 
 @media (max-width:1024px){
   .bento{grid-template-columns:repeat(2,1fr)}
   .tile.big{min-height:380px}
+  .reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:900px){
   .nav nav{display:none}
@@ -268,11 +278,11 @@ footer strong{color:var(--text)}
   .tile{min-height:auto}
   .tile .ic{margin-bottom:8px}
   .why-grid{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
   .why-grid div.wide{flex-direction:column;align-items:flex-start}
   .qcard{padding:20px}
   .qcard form{grid-template-columns:1fr}
   .hero-actions .btn{flex:1 1 100%}
-  .float-wa{display:none}
   .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(10,10,10,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
   .mbar a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:999px;font-weight:700;text-decoration:none;font-size:1.02rem}
   .mbar svg{width:20px;height:20px}
@@ -287,6 +297,8 @@ footer strong{color:var(--text)}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.16-1.5A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.06.89.9-2.98-.2-.31a8.2 8.2 0 1 1 6.84 3.73zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.13-.17.24-.64.8-.78.96-.14.17-.29.19-.53.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.34.08-.17.04-.31-.02-.43l-.76-1.83c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2.02 4.7 4.7 0 0 0 .99 2.5c.12.17 1.71 2.6 4.14 3.65 1.54.66 2.14.72 2.9.6.47-.07 1.46-.6 1.66-1.17.21-.58.21-1.07.15-1.17-.06-.11-.22-.17-.47-.29z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.64-.07-4.85 0-3.2.01-3.58.07-4.85.15-3.23 1.66-4.77 4.92-4.92 1.27-.06 1.65-.07 4.85-.07zM12 6.35a5.65 5.65 0 1 0 0 11.3 5.65 5.65 0 0 0 0-11.3zm0 9.32a3.67 3.67 0 1 1 0-7.34 3.67 3.67 0 0 1 0 7.34zm6.41-9.55a1.32 1.32 0 1 1-2.64 0 1.32 1.32 0 0 1 2.64 0z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H8v-2.89h2.44V9.85c0-2.41 1.44-3.74 3.63-3.74 1.05 0 2.15.19 2.15.19v2.36h-1.21c-1.2 0-1.57.74-1.57 1.5v1.8h2.68l-.43 2.89h-2.25v6.99A10 10 0 0 0 22 12z"/></symbol>
 </svg>
 
 <header class="nav">
@@ -297,6 +309,7 @@ footer strong{color:var(--text)}
     <nav aria-label="Main">
       <a href="#services">Services</a>
       <a href="#how">How it works</a>
+      <a href="#reviews">Reviews</a>
       <a href="#areas">Areas</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -456,6 +469,42 @@ footer strong{color:var(--text)}
     </div>
   </section>
 
+  <section class="sec" id="reviews" aria-labelledby="reviews-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="reviews-h">Good moves.<br>Good words.</h2>
+        <p>Recent five-star feedback from customers who trusted us with their moves.</p>
+      </div>
+      <div class="reviews-grid">
+        <article class="review">
+          <div class="review-rating"><span class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span><span class="review-source">Google review</span></div>
+          <blockquote>I had a great experience working with First Class Moving and Delivery. They arrived on time, handled all my furniture with care, and made the entire move completely stress-free. Finding top-quality service at such a fair price is rare—I’ll definitely be reaching out to them for future moves!</blockquote>
+          <p class="reviewer">Ashraf Jilani</p>
+        </article>
+        <article class="review">
+          <div class="review-rating"><span class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span><span class="review-source">Google review</span></div>
+          <blockquote>Great service! The truck was clean, arrived on time, and the rental process was quick and easy. Highly recommend!</blockquote>
+          <p class="reviewer">Sahar Pasha</p>
+        </article>
+        <article class="review">
+          <div class="review-rating"><span class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span><span class="review-source">Google review</span></div>
+          <blockquote>Moving day turned into a complete logistical nightmare for us, but this company genuinely saved the day. Between unexpected delays and last-minute schedule changes, everything that could go wrong seemed to, yet he remained completely patient, flexible, and kind. He didn't treat us like a corporate transaction; he actually took the extra time to help us sort through the chaos and bent over backwards to adjust the schedule. We are grateful!</blockquote>
+          <p class="reviewer">Negeen</p>
+        </article>
+        <article class="review">
+          <div class="review-rating"><span class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span><span class="review-source">Google review</span></div>
+          <blockquote>Amazing experience with Nawshad! Punctual, careful, and very professional. He treated our belongings like their own and finished the move faster than expected. Highly recommend Nawshad for any move in the GTA.</blockquote>
+          <p class="reviewer">Srinath N</p>
+        </article>
+        <article class="review">
+          <div class="review-rating"><span class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span><span class="review-source">Google review</span></div>
+          <blockquote>Absolutely a fantastic person. Very punctual and extremely helpful.</blockquote>
+          <p class="reviewer">Ahmed Yunus</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="faq" aria-labelledby="faq-h" style="padding-top:0">
     <div class="wrap faq-grid">
       <div class="head" style="display:block"><h2 id="faq-h">Questions, answered.</h2><p style="margin-top:16px">Anything else? Just message us on WhatsApp.</p></div>
@@ -489,12 +538,16 @@ footer strong{color:var(--text)}
 <footer>
   <div class="wrap">
     <div><strong>First Class Moving and Delivery</strong><br>Movers serving Toronto and the GTA, 7 days a week</div>
-    <div>Phone and WhatsApp: <a href="tel:+16478044411" data-track="call_click" data-loc="footer">647-804-4411</a><br>Instagram: <a href="https://www.instagram.com/firstclassmovinganddelivery/" target="_blank" rel="noopener">@firstclassmovinganddelivery</a></div>
+    <div>
+      <div class="social">
+        <a href="https://www.instagram.com/firstclassmovinganddelivery/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100086670064033" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a>
+      </div>
+    </div>
     <div>&copy; <span id="yr">2026</span> First Class Moving and Delivery</div>
   </div>
 </footer>
 
-<a class="float-wa" href="https://wa.me/16478044411?text=Hi%2C%20I%27d%20like%20a%20moving%20quote." aria-label="Chat on WhatsApp" data-track="whatsapp_click" data-loc="float" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg></a>
 
 <div class="mbar" role="navigation" aria-label="Contact">
   <a class="c" href="tel:+16478044411" data-track="call_click" data-loc="mobile_bar"><svg><use href="#i-phone"/></svg>Call now</a>
