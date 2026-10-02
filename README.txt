@@ -4,6 +4,7 @@ First Class Moving and Delivery - website
 Files
   index.html        The website (HTML, CSS and JavaScript in one file)
   images/van.webp   Hero photo
+  images/logo.png   Header logo
   images/favicon.svg Browser tab icon
   robots.txt        Tells search engines they can crawl the site
   sitemap.xml       Page list for Google Search Console
