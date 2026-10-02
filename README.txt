@@ -5,7 +5,8 @@ Files
   index.html        The website (HTML, CSS and JavaScript in one file)
   images/van.webp   Hero photo
   images/logo.png   Header logo
-  images/favicon.svg Browser tab icon
+  images/favicon.png Browser tab icon
+  images/apple-touch-icon.png  iOS home screen icon
   robots.txt        Tells search engines they can crawl the site
   sitemap.xml       Page list for Google Search Console
 
@@ -15,10 +16,11 @@ Before going live
        <link rel="canonical" href="https://YOURDOMAIN.com/">
        <meta property="og:url" content="https://YOURDOMAIN.com/">
        <meta property="og:image" content="https://YOURDOMAIN.com/images/van.webp">
-  3. Add Google Tag Manager in <head>. The site already sends these events to the dataLayer:
+  3. Google Tag Manager (GTM-NS782L7R) is installed. The site already sends these
+     events to the dataLayer:
        call_click       (every phone link, with click_location)
        whatsapp_click   (every WhatsApp link and the quote form)
-     Mark them as conversions in GA4 / Google Ads.
+     Mark them as conversions in GA4 / Google Ads inside GTM.
   4. Submit sitemap.xml in Google Search Console.
 
 Hosting
